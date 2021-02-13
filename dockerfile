@@ -6,7 +6,7 @@ WORKDIR /mock-seed
 COPY ./swagger.yml ./
 WORKDIR /mock-server
 # モックサーバーアプリケーションを生成する
-# -iは元になるjsonを-lは言語を指定するオプション
+# -iは元になるjsonを-lは言語を-o 出力先のフォルダを指定するオプション
 RUN java -jar /opt/swagger-codegen-cli/swagger-codegen-cli.jar \
     generate -i /mock-seed/swagger.yml -l nodejs-server -o ./
 
@@ -20,3 +20,6 @@ RUN npm install
 EXPOSE 8080
 # コンテナ起動でサーバーが起動するようにする
 CMD ["npm", "start"]
+
+
+
